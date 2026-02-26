@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLP-1 Growth OS | Live Demo</title>
+    <link rel="stylesheet" href="/static/css/demo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <header class="demo-header">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">GLP-1 Growth OS</span>
+            </div>
+            <div class="demo-badge">LIVE DEMO</div>
+        </header>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle-container">
+            <span class="mode-label" id="old-label">Old Game</span>
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="mode-label active" id="new-label">New Game (AI)</span>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div class="dashboard">
+            <!-- Left: Pipeline Visualization -->
+            <div class="pipeline-section">
+                <h2>Patient Pipeline</h2>
+                <div class="pipeline">
+                    <div class="stage" id="stage-lead">
+                        <div class="stage-icon">👤</div>
+                        <div class="stage-name">Lead</div>
+                        <div class="stage-count" id="count-lead">0</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage" id="stage-booked">
+                        <div class="stage-icon">📅</div>
+                        <div class="stage-name">Booked</div>
+                        <div class="stage-count" id="count-booked">0</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage" id="stage-showed">
+                        <div class="stage-icon">✅</div>
+                        <div class="stage-name">Showed</div>
+                        <div class="stage-count" id="count-showed">0</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage" id="stage-retained">
+                        <div class="stage-icon">🔄</div>
+                        <div class="stage-name">Retained</div>
+                        <div class="stage-count" id="count-retained">0</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage" id="stage-upsold">
+                        <div class="stage-icon">💎</div>
+                        <div class="stage-name">Upsold</div>
+                        <div class="stage-count" id="count-upsold">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: SMS Conversation -->
+            <div class="conversation-section">
+                <div class="phone-frame">
+                    <div class="phone-header">
+                        <span class="phone-time" id="clock">8:47 PM</span>
+                        <span class="phone-status">📶 5G</span>
+                    </div>
+                    <div class="phone-screen">
+                        <div class="chat-header">
+                            <div class="chat-avatar">🏥</div>
+                            <div class="chat-info">
+                                <div class="chat-name">Dr. Martinez Clinic</div>
+                                <div class="chat-status" id="chat-status">AI Active</div>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="empty-state">
+                                <div class="empty-icon">📱</div>
+                                <p>Click "Simulate 8:47 PM Lead" to see the magic happen</p>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="Type a message..." disabled>
+                            <button disabled>➤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Metrics -->
+            <div class="metrics-section">
+                <h2>Live Metrics</h2>
+                
+                <div class="metric-card highlight">
+                    <div class="metric-label">Revenue Captured</div>
+                    <div class="metric-value" id="revenue-captured">$0</div>
+                    <div class="metric-change positive">+0%</div>
+                </div>
+
+                <div class="metric-card danger">
+                    <div class="metric-label">Revenue Lost</div>
+                    <div class="metric-value" id="revenue-lost">$0</div>
+                    <div class="metric-change negative">to competitors</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Avg Response Time</div>
+                    <div class="metric-value" id="response-time">--</div>
+                    <div class="metric-subtitle" id="response-comparison"></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Patients Saved</div>
+                    <div class="metric-value" id="patients-saved">0</div>
+                    <div class="metric-subtitle">from competitors</div>
+                </div>
+
+                <!-- Active Patients -->
+                <div class="active-patients">
+                    <h3>Active Conversations</h3>
+                    <div class="patient-list" id="patient-list">
+                        <div class="no-patients">No active patients</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <button class="btn btn-secondary" id="reset-btn">🔄 Reset Demo</button>
+            <button class="btn btn-primary pulse" id="simulate-btn">
+                <span class="btn-icon">📞</span>
+                <span class="btn-text">Simulate 8:47 PM Lead</span>
+            </button>
+            <button class="btn btn-success" id="retention-btn" disabled>
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">Simulate 30-Day Retention</span>
+            </button>
+        </div>
+
+        <!-- Story Overlay -->
+        <div class="story-overlay" id="story-overlay">
+            <div class="story-content">
+                <div class="story-icon">🎬</div>
+                <h2>The 8:47 PM Test</h2>
+                <p>Watch what happens when a lead comes in after hours...</p>
+                <button class="btn btn-primary" id="start-demo-btn">Start Demo</button>
+            </div>
+        </div>
+
+        <!-- Comparison Modal -->
+        <div class="comparison-modal" id="comparison-modal">
+            <div class="comparison-content">
+                <h2>Before vs After</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-col old">
+                        <h3>❌ Old Game</h3>
+                        <ul>
+                            <li>Lead comes in at 8:47 PM</li>
+                            <li>Staff gone for the day</li>
+                            <li>Voicemail or no response</li>
+                            <li>Patient calls competitor</li>
+                            <li>$2,800 lost forever</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col new">
+                        <h3>✅ New Game (AI)</h3>
+                        <ul>
+                            <li>Lead comes in at 8:47 PM</li>
+                            <li>AI responds in 4 seconds</li>
+                            <li>Answers questions instantly</li>
+                            <li>Books appointment</li>
+                            <li>$2,800 captured + retained</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="close-comparison">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/demo.js"></script>
+</body>
+</html>
